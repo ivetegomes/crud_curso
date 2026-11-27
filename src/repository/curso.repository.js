@@ -34,6 +34,22 @@ function createCursoRepository(novoCurso) {
     });
 }
 
+function readAllCursoRepository() {
+    return new Promise((resolve, reject) => {
+        db.all(
+            `SELECT * FROM curso`,
+            [],
+            (error, rows) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(rows);
+                }
+            }
+        );
+    });
+}
 export default {
-    createCursoRepository
+    createCursoRepository,
+    readAllCursoRepository
 }

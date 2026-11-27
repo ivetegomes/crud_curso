@@ -10,6 +10,12 @@ async function createCursoService(novoCurso) {
     return cursoRepository;
 }
 
+async function readAllCursoService() {
+    const curso = await cursoRepository.readAllCursoRepository();
+    
+    return curso;
+}
 export default {
-    createCursoService
+    createCursoService,
+    readAllCursoService
 }

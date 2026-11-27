@@ -12,6 +12,18 @@ async function createCursoController(request, response) {
     }
 }
 
+async function readAllCursoController(request, response) {
+    try {
+       const curso = await cursoService.readAllCursoService();
+       
+       response.status(200).send({curso});
+    } catch(error) {
+        response.status(404).send(error.message);
+    }
+}
+
 export default {
-    createCursoController
+    createCursoController,
+    readAllCursoController
+
 }

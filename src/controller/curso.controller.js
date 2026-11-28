@@ -22,8 +22,20 @@ async function readAllCursoController(request, response) {
     }
 }
 
+async function deleteCursoController(request, response) {
+    const { id } = request.params;
+
+    try {
+        const mensagemRetorno = await cursoService.deleteCursoService(id);
+        response.status(200).send({ message: mensagemRetorno });
+    } catch(error) {
+        response.status(400).send(error.message);
+    }
+}
+
 export default {
     createCursoController,
-    readAllCursoController
+    readAllCursoController,
+    deleteCursoController
 
 }
